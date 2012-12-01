@@ -26,11 +26,9 @@ public class PeopleResource
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllPeople()
+    public List<Person> getAllPeople()
     {
-
-        List<Person> people = service.findPeople();
-        return StringUtils.join(people, ",");
+        return service.findPeople();
     }
 
     @POST

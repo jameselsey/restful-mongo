@@ -17,7 +17,7 @@
 
 
     <bean id="mongoURI" class="com.mongodb.MongoURI">
-        <constructor-arg value="mongodb://localhost/aspenserver?maxpoolsize=20;waitqueuemultiple=10;safe=true"/>
+        <constructor-arg value="mongodb://localhost/restfulmongo?maxpoolsize=20;waitqueuemultiple=10;safe=true"/>
     </bean>
 
     <bean id="mongoDbFactory" class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">

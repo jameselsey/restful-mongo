@@ -23,7 +23,11 @@ class PeopleResourceSpec extends Specification {
 
         then:
         1 * service.findPeople() >> expected
-        result == "James 26,Meg 20"
+        result.size() == 2
+        result[0].name == "James"
+        result[0].age == 26
+        result[1].name == "Meg"
+        result[1].age == 20
     }
 
     def "it saves a person"(){

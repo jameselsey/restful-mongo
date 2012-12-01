@@ -18,4 +18,14 @@ public class Person
     {
         return format("%s %d", name, age);
     }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public int getAge()
+    {
+        return age;
+    }
 }
