@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        				http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/data/mongo
+        				http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+
+        				http://www.springframework.org/schema/context
+        				http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo">
+
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.jameselsey.demo"/>
+
+
+    <bean id="mongoURI" class="com.mongodb.MongoURI">
+        <constructor-arg value="mongodb://localhost/aspenserver?maxpoolsize=20;waitqueuemultiple=10;safe=true"/>
+    </bean>
+
+    <bean id="mongoDbFactory" class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
+        <constructor-arg index="0" ref="mongoURI">
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate" lazy-init="true">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+    </bean>
+
+
+</beans>
