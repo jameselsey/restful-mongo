@@ -2,6 +2,7 @@ apply plugin: "groovy"
 apply plugin: "java"
 apply plugin: 'war'
 apply plugin: 'idea'
+apply plugin: 'jetty'
 
 
 version = "1.0-SNAPSHOT"
@@ -45,12 +46,16 @@ dependencies {
     testRuntime "org.objenesis:objenesis:1.2"    // allows mocking of classes without default constructor (together with CGLIB)
 }
 
-war {
-    archiveName = "RestfulMongo.war"
-}
-
 test {
     afterTest { desc, result ->
         println "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
+}
+
+war {
+    archiveName = "RestfulMongo.war"
+}
+
+jettyRunWar {
+    contextPath = "RestfulMongo"
 }
